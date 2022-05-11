@@ -1,5 +1,7 @@
 const sleep = sec => new Promise((resolve) => setTimeout(resolve, sec * 1000));
 
+const sleep = sec => new Promise((resolve) => setTimeout(resolve, sec * 1000));
+
 (async () => {
     const BLACKLIST = ["some company"];
     const WHITELIST = ["web","frontend","backend","software","developer","pentest","hacker","recruiter","hr","talent"];
@@ -10,7 +12,8 @@ const sleep = sec => new Promise((resolve) => setTimeout(resolve, sec * 1000));
 
         const name = el.querySelector(".discover-person-card__name")?.innerText
         const company = el.querySelector(".member-insights__reason")?.innerText
-        const btn = el.querySelectorAll("button")[1]
+        const btn = el.querySelector(".artdeco-button--secondary.ember-view.full-width")
+        const btnText = btn.textContent.trim()
         const occup = el.querySelector(".discover-person-card__occupation")?.innerText
 
         if (!occup || !company) return;
@@ -19,15 +22,15 @@ const sleep = sec => new Promise((resolve) => setTimeout(resolve, sec * 1000));
         const checkOccupation = BLACKLIST.some(element => occup.toLowerCase().includes(element))
 
         const blackListPassed = !checkCompany && !checkOccupation
-
         const occupationWhitelistPassed = WHITELIST.some(element => occup.toLowerCase().includes(element))
-
+        const btnTextCheckPassed = btnText === "Connect"
         
         if (blackListPassed && occupationWhitelistPassed) {
-            console.log(name,company,occup)
-            btn.click();
+            if (btnTextCheckPassed) {
+                console.log(`Connecting: ${name} - ${occup} - ${company}`)
+                btn.click();
+            } else console.warn(`btn validation check failed for ${name}. got "${btnText}" instead of "Connect".`)
         } else console.warn("ignored:",name,company,occup)
-
 
         await sleep(1)
     }
