@@ -1,4 +1,7 @@
-const sleep = sec => new Promise((resolve) => setTimeout(resolve, sec * 1000));
+// steps
+// 1. Go to: https://www.linkedin.com/mynetwork/
+// 2. open browser consle
+// 3. run this script
 
 const sleep = sec => new Promise((resolve) => setTimeout(resolve, sec * 1000));
 
@@ -34,5 +37,4 @@ const sleep = sec => new Promise((resolve) => setTimeout(resolve, sec * 1000));
 
         await sleep(1)
     }
-    
 })()
