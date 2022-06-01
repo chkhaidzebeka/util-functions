@@ -6,7 +6,7 @@
 const sleep = sec => new Promise((resolve) => setTimeout(resolve, sec * 1000));
 
 (async () => {
-    const BLACKLIST = ["some company"];
+    const BLACKLIST = ["palitra"];
     const WHITELIST = ["web","frontend","backend","software","developer","pentest","hacker","recruiter","hr","talent"];
     const items = [...document.querySelectorAll(".artdeco-card.artdeco-card--with-hover.ember-view.discover-entity-type-card")]
 
